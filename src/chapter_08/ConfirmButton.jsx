@@ -1,33 +1,20 @@
 import React from "react";
+import { useState } from "react";
 
-// class fields syntax
+// function Component
 
-class ConfirmButton extends React.Component {
-    constructor(props) {
-        super(props);
+function ConfirmButton(props) {
+    const [isConfirmed, setIsConfirmed] = useState(false);
 
-        this.state = {
-            isConfirmed: false, // 확인여부
-        };
+    const handleConfirm = () => { // EventHandler
+        setIsConfirmed(prevIsConfirmed => !prevIsConfirmed);
+    };
 
-        // bind 제거
-        // this.handleConfirm = this.handleConfirm.bind(this);
-    }
-
-    handleConfirm = () => { // Arrow funciton
-        this.setState(prevState => ({
-            isConfirmed: !prevState.isConfirmed,
-        }));
-    }
-
-    render() {
-        return(
-            <button onClick={this.handleConfirm}
-                    disabled={this.state.isConfirmed}>
-                {this.state.isConfirmed ? "확인완료" : "확인하기"}
+    return(
+        <button onClick={handleConfirm} disabled={isConfirmed}>
+                {isConfirmed ? "확인완료" : "확인하기"}
             </button>
-        );
-    }
+    );
 }
 
 export default ConfirmButton;
