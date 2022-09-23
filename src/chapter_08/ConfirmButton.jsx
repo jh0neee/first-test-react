@@ -1,6 +1,6 @@
 import React from "react";
 
-// class
+// class fields syntax
 
 class ConfirmButton extends React.Component {
     constructor(props) {
@@ -10,10 +10,11 @@ class ConfirmButton extends React.Component {
             isConfirmed: false, // 확인여부
         };
 
-        this.handleConfirm = this.handleConfirm.bind(this);
+        // bind 제거
+        // this.handleConfirm = this.handleConfirm.bind(this);
     }
 
-    handleConfirm() { // EventHandler
+    handleConfirm = () => { // Arrow funciton
         this.setState(prevState => ({
             isConfirmed: !prevState.isConfirmed,
         }));
